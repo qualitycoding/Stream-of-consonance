@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "run_id": "gen-20260919T204010Z-consonance-inverse",
+  "phases_completed": ["phase0", "phase1", "phase2", "phase3", "phase4"],
+  "phase5": {"commit_local": true, "pushed": false, "reason": "no credentials/remote/target repo"},
+  "frozen_manifest": "tests/FROZEN.sha256",
+  "reset_log": ["pre-freeze: invalid perf test replaced; branch had no commits"],
+  "open_conditions": ["S0 verification must not contradict frozen tests", "Mythos/Fable review at GATE"]
+}
