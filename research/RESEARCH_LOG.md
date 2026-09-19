@@ -24,3 +24,14 @@ R9 [UNVERIFIED] Hutchinson & Knopoff (1978) via Bigand, Parncutt & Lerdahl (1996
 G1 Perceptual validity of composite score outside 12-TET Western chords is unstudied in R1.
 G2 No published inversion/generation procedure for the composite model was found; the sampler design is this plan's own proposal (energy-based conditioning on a target), not a cited method.
 G3 Numerical agreement with the R `incon` implementation is not testable in this environment (no R/CRAN access).
+
+## S0 verification (performed 2026-09-19, during implementation)
+Primary source read: MIT-licensed R package `incon` v0.5.0 (https://github.com/pmcharrison/incon, files R/model-dycon.R, R/model-har18.R, R/model-har-2019.R, R/model-corpdiss.R, R/models.R) and `hrep` (R/milne-pc-spectrum.R, R/pc-chord-type.R, R/coded-vec.R).
+- R7 VERIFIED: Sethares a=3.5, b=5.75, s=0.24/(0.021*f_lo+19). NOTE: incon's default uses min(a1,a2), not a1*a2 (Sethares 2005/Weisser 2013) — implemented that way.
+- R9 VERIFIED (better than recalled): Hutchinson-Knopoff via Mashinter: CBW=1.72*mean_f^0.65, y=|df|/CBW, g=((y/0.25)*exp(1-y/0.25))^2, g=0 for y>1.2, roughness = sum_{i<j} a_i a_j g / sum a^2.
+- Vassilakis formula verified (s=0.24/(0.0207 f+18.96)).
+- Harmonicity VERIFIED: Milne pc-spectrum, 12 harmonics, weight 1/h^rho, rho=0.75 (composite passes rho=roll_off*0.75), sigma=6.83 cents, 1200 bins, cosine-similarity sweep, KL from uniform in bits: sum p*log2(p*n).
+- Composite coefficients VERIFIED (har_19_composite_coef): intercept 0.628434666589357; chord_size 0.422267698605598 (disabled by default in incon); hutch roughness -1.62001025973261; har_18 harmonicity 1.77992362857478; corpus dissonance (-log P) -0.0892234643584134. Defaults num_harmonics=11, roll_off=1.
+- Familiarity data VERIFIED: popular_1_pc_chord_type (2048 chord types, McGill Billboard; total count 74,093; add-one smoothing). Encoding: id = 1 + sum 2^(11-j) over non-bass pitch classes j (decode_pc_chord_type).
+- R8 (Glasberg-Moore ERB) remains a definitional constant inside test_interference.py only; it did not contradict the Sethares peak (27 Hz at 500 Hz, inside 5%-60% of ERB).
+- incon license: MIT (R1 caveat closed). No frozen test was contradicted by S0 findings.

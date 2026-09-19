@@ -1,6 +1,6 @@
 # Execution Plan — Reversible Consonance Model & Consonance-Targeted Tone-Stream Generator
 Generation branch: `gen-20260919T204010Z-consonance-inverse`
-Authoring model tier: Sonnet (see Phase 0 limitation). Status: PLAN ONLY — no implementation was executed.
+Authoring model tier: Sonnet (see Phase 0 limitation). Status: PLAN + IMPLEMENTED 2026-09-19 (see IMPLEMENTATION_REPORT.md). Plan text below is unchanged from generation.
 
 ## Goal
 Given a target consonance value c*, generate a stream of tones whose model-consonance stays at c*. The model must be usable in reverse (sample/solve for tones given c*).
@@ -77,5 +77,5 @@ No new critical/high vectors found. Highest residual severity: Medium.
 - Tests are RED by design; the perf budget (2 s/step) and R7–R9 constants are unvalidated until S0/S2.
 - Cross-validation against `incon` is out of scope for this run (R8).
 
-## PUSH STATUS
+## PUSH STATUS (unchanged: still local-only; hand-off via git bundle + tarball)
 GitHub push NOT performed: no credentials, no configured remote, and no target repository were available in this environment (unauthenticated api.github.com request returned HTTP 403). Commit is local only; a git bundle accompanies it.
