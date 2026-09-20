@@ -1,32 +1,29 @@
-"""Generate consonance-targeted tone streams and render them to WAV with the same timbre the model scores.
+"""Generate consonance-targeted tone streams in each pitch mode and render them to WAV.
 Usage: python examples/generate_demo.py [out_dir]"""
 import json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from consonance.composite import CompositeModel
+from consonance.generator import ToneStreamGenerator
+from consonance.pitchset import JUST_INTERVALS_CENTS
 from consonance.render import render_stream
-from consonance.sampler import generate_stream
-from consonance.timbre import harmonic_timbre
 
 out = sys.argv[1] if len(sys.argv) > 1 else "examples/out"
 os.makedirs(out, exist_ok=True)
-REF = 220.0
-hz = lambda c: REF * 2.0 ** (np.asarray(c, float) / 1200.0)
-timbre = harmonic_timbre(11, 1.0)
-model = CompositeModel(timbre)
-efs = lambda state: (lambda c: model.score_with_candidates(hz(list(state)), hz(c)))
-cands = np.arange(-600.0, 1800.0, 5.0)
+CASES = [("standard", 0.8, dict(pitch_mode="standard")),
+         ("standard", 1.6, dict(pitch_mode="standard")),
+         ("standard", 2.0, dict(pitch_mode="standard")),
+         ("free", 0.8, dict(pitch_mode="free", resolution_cents=1.0)),
+         ("free", 1.6, dict(pitch_mode="free", resolution_cents=1.0)),
+         ("free", 2.0, dict(pitch_mode="free", resolution_cents=1.0)),
+         ("just", 1.6, dict(pitch_mode="free", snap_to=JUST_INTERVALS_CENTS))]
 summary = {}
-for target in (0.8, 1.6, 2.0):
-    r = generate_stream(efs, cands, 24, target, 0.1, rng_seed=7, start=(0.0, 700.0), window=4,
-                        min_separation_cents=30.0, tolerance=0.25, novelty_weight=1.5)
-    state, scores = [0.0, 700.0], []
-    for n in r.notes:
-        state = (state + [n])[-4:]
-        scores.append(float(model.score(hz(state))))
-    name = f"stream_target_{target:.1f}"
-    render_stream(r.notes, timbre, os.path.join(out, name + ".wav"), model=model, ref_hz=REF, sustain_notes=4)
-    summary[name] = {"target": target, "notes_cents_re_220Hz": r.notes, "realised_scores": scores,
-                     "mean_realised": float(np.mean(scores))}
-    print(name, "mean realised", round(float(np.mean(scores)), 3), flush=True)
+for tag, target, kw in CASES:
+    g = ToneStreamGenerator(ref_hz=220.0, **kw)
+    res, scores = g.generate(target=target, n_steps=24, seed=7, start=(0.0, 700.0))
+    name = f"{tag}_target_{target:.1f}"
+    render_stream(res.notes, g.timbre, os.path.join(out, name + ".wav"), model=g.model, ref_hz=g.ref_hz, sustain_notes=4)
+    summary[name] = {"pitch_mode": g.description(), "target": target, "notes_cents_re_220Hz": res.notes,
+                     "notes_hz": [round(float(x), 3) for x in g.hz(res.notes)],
+                     "realised_scores": scores, "mean_realised": float(np.mean(scores))}
+    print(f"{name:20s} {g.description():65s} mean realised {np.mean(scores):.3f}", flush=True)
 json.dump(summary, open(os.path.join(out, "streams.json"), "w"), indent=1)
