@@ -1,4 +1,6 @@
-# consonance — reversible consonance model & consonance-targeted tone streams
+# Stream-of-consonance
+
+Reversible consonance model & consonance-targeted tone streams (Python package `consonance`).
 
 Scores chords with the Harrison & Pearce (2020) composite model (Hutchinson-Knopoff roughness + pitch-class harmonicity
 + corpus familiarity) and *inverts* it by conditional sampling: given a target consonance c*, pick each new tone so the
@@ -33,3 +35,5 @@ Calibration: `python scripts/calibration_report.py docs` -> docs/CALIBRATION.md;
 **Scale:** score = the published regression output (about -0.7 to 3.1; higher = more consonant). It is *model*-consonance
 fitted to Western listeners' ratings of 12-TET chords, not a guarantee of perceived consonance for other tunings or
 timbres (see IMPLEMENTATION_REPORT.md, docs/LISTENING_PROTOCOL.md). Attribution: NOTICE.
+
+License: Apache-2.0 (see LICENSE). Third-party attribution for the incon/hrep formulas and Billboard chord counts (MIT): NOTICE.
