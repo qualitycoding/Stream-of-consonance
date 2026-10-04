@@ -1,9 +1,72 @@
 {
   "schema_version": 1,
   "run_id": "gen-20260919T204010Z-consonance-inverse",
-  "phases_completed": ["phase0", "phase1", "phase2", "phase3", "phase4", "implementation:S0-S10"],
+  "phases_completed": [
+    "phase0",
+    "phase1",
+    "phase2",
+    "phase3",
+    "phase4",
+    "implementation:S0-S10",
+    "addendum-adopted",
+    "S-RETRO"
+  ],
   "gate": "pending: Mythos/Fable review not performed",
-  "tests": {"total": 42, "passed": 42, "frozen_manifest": "tests/FROZEN.sha256", "modified": false},
-  "phase5": {"commit_local": true, "pushed": false, "reason": "no GitHub access; hand-off via bundle + tarball"},
-  "open_items": ["golden-value validation vs R incon", "listening test", "regression test for window semantics (needs new freeze)", "Langevin refinement"]
+  "tests": {
+    "frozen": 42,
+    "non_frozen": 17,
+    "total": 59,
+    "passed": 59,
+    "frozen_manifest": "tests/FROZEN.sha256",
+    "frozen_modified": false
+  },
+  "phase5": {
+    "commit_local": true,
+    "pushed": false,
+    "reason": "no GitHub access; hand-off via bundle + tarball"
+  },
+  "open_items": [
+    "golden-value validation vs R incon",
+    "listening test",
+    "regression test for window semantics (needs new freeze)",
+    "Langevin refinement",
+    "see DEVIATIONS.md open items 1-6"
+  ],
+  "gate_g003": "pending: awaiting human response (S-KNOW)",
+  "knowledge_store": {
+    "location": "github.com/qualitycoding/agent-knowledge (proposed default, A-001)",
+    "commit_read": "",
+    "readable": false,
+    "note": "unauthenticated ls-remote failed: absent or private; not verified with credentials"
+  },
+  "lessons_loaded": [],
+  "lessons_recorded": [
+    "L-20261004T102001Z-recalled-literature-facts-wrong",
+    "L-20261004T102002Z-perf-test-budget-not-derived",
+    "L-20261004T102003Z-window-semantics-off-by-one",
+    "L-20261004T102004Z-checkpoint-rotated-corrupt-file",
+    "L-20261004T102005Z-calibration-targets-before-attainable-range",
+    "L-20261004T102006Z-placeholder-arithmetic-left-in-code",
+    "L-20261004T102007Z-sandbox-reset-lost-working-tree",
+    "L-20261004T102008Z-duplicate-pitch-modules-shipped",
+    "L-20261004T102009Z-stale-test-counts-in-reports",
+    "L-20261004T102010Z-plan-controls-not-traced-to-delivery",
+    "L-20261004T102011Z-untested-causal-explanation-stated-as-fact"
+  ],
+  "knowledge_added": [
+    "K-20261004T102012Z-hp2020-composite-model-structure",
+    "K-20261004T102013Z-incon-composite-coefficients",
+    "K-20261004T102014Z-hutchinson-knopoff-roughness-mashinter",
+    "K-20261004T102015Z-sethares-roughness-uses-min-amplitude",
+    "K-20261004T102016Z-milne-harmonicity-parameters-and-defaults",
+    "K-20261004T102017Z-billboard-chord-type-corpus-encoding",
+    "K-20261004T102018Z-cousineau-2012-amusia-consonance",
+    "K-20261004T102019Z-hp2018-energy-based-sequence-model",
+    "K-20261004T102020Z-harmonic-entropy-erlich",
+    "K-20261004T102021Z-milne-laney-sharp-2016-microtonal-harmonicity",
+    "K-20261004T102022Z-composite-score-attainable-range",
+    "K-20261004T102023Z-github-access-from-sandbox",
+    "K-20261004T102024Z-sandbox-working-directory-resets",
+    "K-20261004T102025Z-rdata-reads-rda-in-python"
+  ]
 }

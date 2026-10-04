@@ -79,3 +79,21 @@ No new critical/high vectors found. Highest residual severity: Medium.
 
 ## PUSH STATUS (unchanged: still local-only; hand-off via git bundle + tarball)
 GitHub push NOT performed: no credentials, no configured remote, and no target repository were available in this environment (unauthenticated api.github.com request returned HTTP 403). Commit is local only; a git bundle accompanies it.
+
+## Closing steps (appended by the implementing agent: lessons & knowledge addendum)
+These steps come after every delivery step and depend on S0-S10 and GATE. Earlier steps carry no `Lessons applied` field because R0 was skipped (A-005).
+
+### S-RETRO Retrospective
+- Tier: Opus, fresh context. Executed by the implementing agent in its own context; see the limitations in `RETROSPECTIVE.md`.
+- Depends on: S0-S10, GATE.
+- Lessons applied: none.
+- Work: collect the execution history (git log, `DEVIATIONS.md`, `IMPLEMENTATION_REPORT.md`, test counts), then answer the four retrospective questions and link every finding to an `L-` or `K-` file. Re-run nothing and change no deliverable.
+- Done when: every finding links to a lesson or knowledge file and `python scripts/check_knowledge_schema.py` exits 0.
+
+### S-KNOW Lessons & Knowledge Push
+- Tier: Haiku. Gate: `G-003`.
+- Depends on: S-RETRO.
+- Lessons applied: none.
+- Work: halt at `G-003` with `GATE-G-003.md`; on sign-off copy `lessons/`, `knowledge/` and `TAXONOMY.md` into the target in the Appendix C layout, regenerate its indexes and push; retry up to 3 times if the target moved; otherwise write `git bundle create knowledge-gen-20260919T204010Z-consonance-inverse.bundle`.
+- Done when: the push succeeded and the target's indexes list every pushed ID, or the response was `do-not-push`, or the bundle fallback was written and reported.
+
