@@ -5,6 +5,7 @@
 - **D-003 Lesson directory names.** `lessons/<facet>-<value>/` (for example `lessons/domain-music-perception/`) instead of `lessons/<facet>:<value>/`, because a colon is not a valid character in Windows paths. Knowledge items are filed under the bare subject value.
 - **D-004 R0 skipped** (research complete; implementing-agent rule). No lessons were loaded.
 - **D-005 Earlier deviations** are listed in `IMPLEMENTATION_REPORT.md` (findings 1-10).
+- **D-006 Two stores instead of one.** At G-003 the human named separate repositories for lessons and knowledge. Appendix C describes one store, so each repository holds its own folder (`lessons/` or `knowledge/`), a copy of `TAXONOMY.md`, its generated `INDEX.md`, a README, and `scripts/build_index.py` and `scripts/check_knowledge_schema.py` (this run added `build_index.py`, which the addendum leaves unspecified). Cross-references between a lesson and a knowledge item are by ID only.
 
 ## Open items from the retrospective (nothing below has been changed)
 1. Consolidate `consonance/pitchset.py` and `consonance/pitchgrid.py` and their test files (L-20261004T102008Z-duplicate-pitch-modules-shipped).

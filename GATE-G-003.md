@@ -1,6 +1,6 @@
 # GATE G-003: lessons & knowledge push
 
-Status: **halted, waiting for a human response.** Implementation is complete; only this push is held back.
+Status: **signed off and pushed.** Response received: `push-to` two targets (below).
 
 ## Proposed target
 `qualitycoding/agent-knowledge` on GitHub (A-001). It could not be read without credentials, so it may not exist yet. If it does not, S-KNOW creates it with the Appendix C layout and `TAXONOMY.md`.
@@ -47,3 +47,9 @@ Pushing needs a token with write access to the chosen repository. The token past
 
 ## Fallback already prepared
 A bundle of the working branch and a self-contained staging archive of `TAXONOMY.md`, `lessons/` and `knowledge/` were written to the outputs folder.
+
+## Response and result
+- **Response:** `push-to: lessons -> https://github.com/qualitycoding/Lessons ; knowledge -> https://github.com/qualitycoding/knowledge`. The proposed single store `qualitycoding/agent-knowledge` was not used.
+- **Pushed:** `Lessons` main `e937197` (11 lessons, `TAXONOMY.md`, generated `lessons/INDEX.md`); `knowledge` main `16e9227` (14 items, `TAXONOMY.md`, generated `knowledge/INDEX.md`). Both repositories were private and empty beforehand; no force-push.
+- **Done check:** fresh clones of both repositories pass `scripts/check_knowledge_schema.py`; each remote index lists every pushed ID (11 and 14); entry files are byte-identical to the working branch; no token appears in either repository or its history.
+- The token used was supplied for this push only, was sent through a temporary header, and is not stored in any remote URL or config. It should be revoked.

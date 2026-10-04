@@ -9,7 +9,8 @@
     "phase4",
     "implementation:S0-S10",
     "addendum-adopted",
-    "S-RETRO"
+    "S-RETRO",
+    "S-KNOW"
   ],
   "gate": "pending: Mythos/Fable review not performed",
   "tests": {
@@ -32,12 +33,12 @@
     "Langevin refinement",
     "see DEVIATIONS.md open items 1-6"
   ],
-  "gate_g003": "pending: awaiting human response (S-KNOW)",
+  "gate_g003": "signed off: push-to two repositories; pushed 2026-10-04 (Lessons e937197, knowledge 16e9227)",
   "knowledge_store": {
-    "location": "github.com/qualitycoding/agent-knowledge (proposed default, A-001)",
+    "location": "lessons: github.com/qualitycoding/Lessons ; knowledge: github.com/qualitycoding/knowledge (both private)",
     "commit_read": "",
-    "readable": false,
-    "note": "unauthenticated ls-remote failed: absent or private; not verified with credentials"
+    "readable": true,
+    "note": "both were empty when pushed, so nothing was loaded; first push by this run"
   },
   "lessons_loaded": [],
   "lessons_recorded": [
