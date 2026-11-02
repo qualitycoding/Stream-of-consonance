@@ -29,6 +29,13 @@ per 2 octaves is coarser but still lands within ±0.25 of the target 93–99% of
 - Resumable runs: pass `Checkpoint(path)`; interrupted runs resume bit-identically.
 - Demo audio: `python examples/generate_demo.py` (rendered in `examples/out/`: standard vs free vs JI at several targets).
 
+## Setup
+
+Needs Python 3.10 or later and `numpy`. Run everything from the repository root, with `pip install numpy pytest`.
+Installing the package with `pip install .` currently **fails**: the planning folders (`plan/`, `research/`,
+`premortem/`, `reviews/`) sit next to `consonance/`, so setuptools reports "multiple top-level packages". Fixing
+that needs a `packages = ["consonance"]` setting in `pyproject.toml`.
+
 Run tests: `sh scripts/verify_frozen.sh && python -m pytest` (59 tests; `tests/` is FROZEN, see tests/FROZEN.md).
 Calibration: `python scripts/calibration_report.py docs` -> docs/CALIBRATION.md; `python scripts/compare_pitch_modes.py docs` -> docs/PITCH_MODES.md.
 
